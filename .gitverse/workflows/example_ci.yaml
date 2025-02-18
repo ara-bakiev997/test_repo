@@ -1,0 +1,20 @@
+name: Сборка Qt проекта для Аврора ОС
+on:
+  push:
+jobs:
+  s3-publish:
+    name: Публикация файлов
+    runs-on: ubuntu-latest
+    container:
+      image: amazon/aws-cli
+      volumes:
+        - /root/.aws:/root/.aws
+    steps:
+      - name: Публикация в S3 
+        run: aws s3 ls
+  s3-import-action:
+    name: Тест включения
+    runs-on: ubuntu-latest
+    steps:
+      - name: Тест импорта
+        uses: https://gitverse.ru/VRyabchevsky/ci_import/publish@master
