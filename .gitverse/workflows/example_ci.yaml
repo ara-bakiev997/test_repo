@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Тест импорта
-        uses: https://gitverse.ru/VRyabchevsky/ci_import/publish@master
+        uses: https://gitverse.ru/VORyabchevsky/ci_import/publish@master
