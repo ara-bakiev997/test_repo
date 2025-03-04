@@ -4,8 +4,8 @@ runs:
   using: "composite"
   container:
     image: amazon/aws-cli:latest 
-  volumes:
-    - /root/.aws:/root/.aws
+  # volumes:
+  #   - /root/.aws:/root/.aws
   steps:
     - name: получение списка файлов
-      run: aws s3 ls
+      run: aws --version

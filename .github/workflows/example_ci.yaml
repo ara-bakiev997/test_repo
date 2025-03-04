@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: amazon/aws-cli
-      volumes:
-        - /root/.aws:/root/.aws
+      # volumes:
+      #   - /root/.aws:/root/.aws
     steps:
       - name: Публикация в S3 
-        run: aws s3 ls
+        run: aws --version
   s3-import-action:
     name: Тест включения
     runs-on: ubuntu-latest
