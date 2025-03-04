@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Тест импорта
-        uses: https://github.com/ara-bakiev997/test_repo/publish@master
+        uses: https://github.com/ara-bakiev997/test_repo/publish@main
