@@ -17,9 +17,9 @@ jobs:
       - name: print env
         run: env
       - name: Upload application 
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: second-artifact
           path: |-
             bin/**
           # api_key: '${{secrets.RELEASE_TOKEN}}'
