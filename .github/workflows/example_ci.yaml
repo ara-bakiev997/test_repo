@@ -2,19 +2,25 @@ name: Сборка Qt проекта для Аврора ОС
 on:
   push:
 jobs:
-  s3-publish:
-    name: Публикация файлов
-    runs-on: ubuntu-latest
-    container:
-      image: amazon/aws-cli
-      # volumes:
-      #   - /root/.aws:/root/.aws
-    steps:
-      - name: Публикация в S3 
-        run: aws --version
-  s3-import-action:
-    name: Тест включения
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Тест импорта
-        uses: https://github.com/ara-bakiev997/test_repo/publish@main
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: setup go
+        uses: https://github.com/actions/setup-go@v4
+        with:
+          go-version: '>=1.22.7'
+      - name: go build
+        run: go build -o bin/myapp
+      - name: print env
+        run: env
+      - name: Upload application 
+        id: upload artifact
+        uses: https://gitea.com/actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: |-
+            bin/**
+          # api_key: '${{secrets.RELEASE_TOKEN}}'
